@@ -1,0 +1,5 @@
+nik 100 0 -150
+bhargav 600 0 500
+patwari 150 0 150
+shivank 0 0 -200
+gera 0 0 -300

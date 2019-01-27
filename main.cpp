@@ -49,7 +49,7 @@ FILE *fp_2;
 		char tstr[50][25];
 		int tno,i,j;
 		int arr[50];
-		char mem[50][25],arr_1[10][10];
+		char mem[50][25],arr[10][10],c,a,b;
 		int giv[15];
 		int spent[15];
 		int total[15];
@@ -65,7 +65,7 @@ FILE *fp_2;
 		int r_1;
 		int csum=0;
 		int temp_21;
-		int temp_22,k,l,a,b,c;
+		int temp_22;
 		struct oye
 		{
 			char namef[25];
@@ -567,56 +567,32 @@ int debts(int q,int w,int r,int y)
  	
 	 if(debch==1)
  	{
- 			strcpy(str_temp5,tstr[r]);
-	 strcat(str_temp5,".txt");
-	temp_6=0;
-	 fp_1=fopen(str_temp5,"r");
-	 while(fscanf(fp_1,"%d\n",&par[temp_6])!=EOF)
-	 {
-	 //cout<<par[temp_6]<<endl;
-	 temp_6++;
-	 }
-	 //cout<<"Values initially"<<endl;
-	 temp_11=0;
-	 for(i=0;i<q;i++)
-	 {
-	 	for(j=0;j<q;j++)
-	 	{
-	 		parr[i][j]=par[temp_11++];
-	 		cout<<parr[i][j]<<" ";
-		 }
-		 cout<<endl;
-	 }
-	 
-	 fclose(fp_1);
- 	
-          for(k=0;k<q;k++)
+ 	for(i=0;i<q;i++)
+         {
+          for(j=0;j<q;j++)
+           {
+            arr[i][j]=parr[i][j];
+           }
+        }
+          for(i=0;i<q;i++)
              {
-             for(l=0;l<q;l++)
+             for(j=0;j<q;j++)
                 {
-              if(k!=l && parr[k][l]!=-1)
+              if(i!=j && arr[i][j]>=0)
                {
-                 a=parr[k][l];
-               // cout<<"a is "<<a<<endl;
-                 b=parr[l][k];
-               //  cout<<"b is "<<b<<endl;
-                 parr[k][l]=-1;
-                 parr[l][k]=-1;
-                 
+                 a=arr[i][j];
+                 b=arr[j][i];
+                 arr[i][j]=-1;
+                 arr[j][i]=-1;
                  c=a-b;
-                // cout<<"c is "<<c<<endl;
                  if(c>0)
                   {
-                   cout<<mem[w+l]<<" has to pay "<<mem[w+k]<<" "<<abs(c)<<endl;
+                   cout<<mem[w+j]<<"has to pay "<<mem[w+i]<<abs(c)<<endl;
                   }
-                 else if(c<0)
+                 else
                   {
-                  cout<<mem[w+k]<<" has to pay "<<mem[w+l]<<" "<<abs(c)<<endl;
+                  cout<<mem[w+i]<<"i has to pay j "<<mem[w+j]<<abs(c)<<endl;
                   }
-                  
-                  else{
-                  	
-				  }
                 }
 
             }
